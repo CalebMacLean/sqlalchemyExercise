@@ -22,6 +22,21 @@ class User(db.Model):
         """Return full name of user."""
 
         return f"{self.first_name} {self.last_name}"
+    
+    posts = db.relationship("Post", backref='user', cascade="all, delete-orphan")
+    
+class Post(db.Model):
+    """User post."""
+
+    __tablename__ = "posts"
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(25), nullable=False)
+    content = db.Column(db.String(75), nullable=False)
+    created_at = db.Column(db.DateTime, 
+                           nullable = False,
+                           default=datetime.datetime.now)
+    user_id = db.Column(db.Integer, db.foreign_key('users.id'), nullable=False)
 
 
 def connect_db(app):

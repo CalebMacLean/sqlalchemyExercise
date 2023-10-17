@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} New Post {% endblock %}
+
+{% block content %}
+<h1>New Post Form</h1>
+
+<form method="POST">
+    <div class="input-container">
+        <label for="title-input">Title: </label>
+        <input type="text" name="title-input" id="title-input" placeholder="Enter A Title">
+    </div>
+
+    <div class="input-container">
+        <label for="post-input">Title: </label>
+        <input type="text" name="post-input" id="post-input" placeholder="Enter A Post">
+    </div>
+</form>
+{% endblock %}
